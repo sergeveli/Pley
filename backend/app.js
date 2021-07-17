@@ -8,20 +8,23 @@ const { environment } = require('./config');
 const isProduction = environment === 'production';
 const routes = require('./routes');
 
+console.log(routes)
+
 const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 
 if (!isProduction) {
-  
   app.use(cors());
 }
 
 app.use(helmet({
   contentSecurityPolicy: false
 }));
-
+app.get('/test', (req, res)=>{
+  res.send('Success')
+})
 
 app.use(
   csurf({
