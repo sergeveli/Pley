@@ -4,6 +4,12 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+      },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -49,6 +55,8 @@ module.exports = (sequelize, DataTypes) => {
   
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Review, { foreignKey:'userId'})
+    User.hasMany(models.Business, {foreignKey: 'id'})
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
