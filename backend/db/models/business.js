@@ -4,14 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     id: DataTypes.INTEGER,
     ownerId: DataTypes.INTEGER,
     title: DataTypes.STRING,
-    decription: DataTypes.TEXT,
-    address: DataTypes.STRING,
-    city: DataTypes.STRING,
-    state: DataTypes.STRING
+    description: DataTypes.TEXT,
+    location: DataTypes.STRING
   }, {});
   Business.associate = function(models) {
     // associations can be defined here
-    Business.hasMany(models.user, {foreignKey: 'ownerId'})
+    Business.hasMany(models.Review, {foreignKey: 'id'})
+    Business.belongsTo(models.User, {foreignKey: 'ownerId'})
   };
   return Business;
 };

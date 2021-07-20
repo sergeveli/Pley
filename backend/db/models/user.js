@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: Sequelize.INTEGER
       },
     username: {
+      unique: true,
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -23,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     email: {
+      unique: true,
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
