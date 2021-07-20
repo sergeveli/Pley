@@ -9,34 +9,28 @@ const { requireAuth } = require('../../utils/auth.js');
 const  businessRouter  = require('./businesses.js')
 ///place router that goes to each business page
 
+
+router.use('/session',sessionRouter)
 router.use('/businesses', businessRouter)
 
-
-router.get(
-    '/restore-user',
-    restoreUser,
-    (req, res) => {
-      return res.json(req.user);
-    }
-  );
-
-router.get(
+  router.get(
     '/require-auth',
     requireAuth,
     (req, res) => {
       return res.json(req.user);
     }
-);
-
-router.get('/set-token-cookie', asyncHandler(async (req, res) => {
-    const user = await User.findOne({
+    );
+    
+    router.get('/set-token-cookie', asyncHandler(async (req, res) => {
+      const user = await User.findOne({
         where: {
-            username: 'Demo-lition'
+          username: 'Demo-lition'
         },
-    })
-    setTokenCookie(res, user);
-    return res.json({ user });
-}));
+      })
+      setTokenCookie(res, user);
+      return res.json({ user });
+    }));
+    
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
