@@ -11,7 +11,7 @@ const  businessRouter  = require('./businesses.js')
 
 
 router.use('/session',sessionRouter)
-router.use('/businesses', businessRouter)
+router.use('/business', businessRouter)
 
   router.get(
     '/require-auth',
