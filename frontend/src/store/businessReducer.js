@@ -13,13 +13,13 @@ const loadBusinesses = (businesses) =>({
     payload: businesses
 })
 export const getAllBusinesses = () => async(dispatch) =>{
-    const response = await fetch('/api/businesses')
+    const response = await fetch('/api/business/')
     if(response.ok){
         const businesses = await response.json()
         console.log(businesses)
         dispatch(loadBusinesses(businesses))
     }
-}
+    }
 
 
 export const getSingleBusiness = (businessId) => async(dispatch) => {
