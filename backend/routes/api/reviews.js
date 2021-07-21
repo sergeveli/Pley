@@ -1,25 +1,25 @@
-// //// POST /businesses/:business_id/reviews
+//// POST /businesses/:business_id/reviews
 // const express = require('express')
 // const router = express.Router();
 
 // const asyncHandler = require('express-async-handler');
 
-// const { Business } = require('../../db/models');
+// const { Review } = require('../../db/models');
 
-// router.get( '/',
+// // router.delete( '/:reviewId',
+// //     asyncHandler(
+// //         async (req, res) => {
+// //           const review = await Review.findAll();
+// //           return await res.json(review);
+// //     })
+// // );
+
+// router.delete('/:id',
 //     asyncHandler(
 //         async (req, res) => {
-//           const businesses = await Business.findAll();
-//           return await res.json(businesses);
-//     })
-// );
-
-// router.post('/:id',
-//     asyncHandler(
-//         async (req, res) => {
-//         businessId = req.params.id
-//           const business = await Business.findByPk(businessId); where: businessId === id for reviews to each business
-//           return await res.json(business);
+//         reviewId = req.params.id
+//           const review = await Review.findByPk(reviewId); /*where: businessId === id for reviews to each business*/
+//           return await res.json(review);
 //     })
 // )
 // module.exports = router;
