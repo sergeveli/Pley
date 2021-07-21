@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import BusinessPage from './components/BusinessPage/BusinessPage.js'
-import HomePage from './components/HomePage/home'
+import Home from './components/HomePage/home'
 
 function App() {
   const dispatch = useDispatch();
@@ -25,10 +25,10 @@ function App() {
           <Route path="/signup" exact={true}>
             <SignupFormPage />
           </Route>
-          <Route path='/locations'>
+          <Route path='/home'>
             {/* <AllBusinesses /> */}
           </Route>
-          <Route path='/location/:id'>
+          <Route path='/home/:id'>
             <BusinessPage />
           </Route> 
 
