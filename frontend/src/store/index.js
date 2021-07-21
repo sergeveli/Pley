@@ -6,7 +6,7 @@ import businessReducer from "./businessReducer";
 const rootReducer = combineReducers({
   session: sessionReducer,
   business: businessReducer,
-  
+
 });
 
 let enhancer;

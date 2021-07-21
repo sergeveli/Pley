@@ -6,19 +6,35 @@ import { useParams } from 'react-router-dom'
 const Home = () => {
     const dispatch = useDispatch();
     const { businessId } = useParams();
-    const businesses = useSelector((state)=>Object.values(state.getAllBusinesses))
+    const businesses = useSelector((state)=>(state.business.allBusiness))
     console.log(businesses)
 
     useEffect(() => {
-        dispatch(getAllBusinesses(businessId))
+        dispatch(getAllBusinesses())
     },[dispatch])
 
+    let businessList;
+    if(businesses){
+        businessList = businesses.map(business=>(
+        <div>
+            <div>{business.title}</div>
+            <div>{business.description}</div>
+            <div>{business.title}</div>
+        </div>
+        ))
+    }
+
     return (
+    <div>
         <div className='Tagline'>
-            <p>Let's Pley</p></div>,
+            <p>Let's Pley</p></div>
         <div className='search_bar'>
             <input className='searchbox' type='text'></input>
         </div>
+        <div>
+            {businessList && businessList}
+        </div>
+    </div>
     )
 }
 

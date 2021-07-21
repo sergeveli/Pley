@@ -20,13 +20,10 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path='/'>
-            {/* <Home /> */}
+            <Home />
           </Route>
           <Route path="/signup" exact={true}>
             <SignupFormPage />
-          </Route>
-          <Route path='/home'>
-            {/* <AllBusinesses /> */}
           </Route>
           <Route path='/home/:id'>
             <BusinessPage />
