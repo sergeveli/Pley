@@ -23,6 +23,7 @@ const Home = () => {
             <div className='City'>{business.city}</div>
             <div className='State'>{business.state}</div>
             <div className='Zip'>{business.zip}</div>
+            <div className='Location'>{business.location}</div>
         </div>
         ))
     }
