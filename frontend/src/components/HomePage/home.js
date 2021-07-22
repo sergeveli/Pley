@@ -19,11 +19,11 @@ const Home = () => {
         <div className='business_container'>
             <div className='Name'>{business.title}</div>
             <div className='Description'>{business.description}</div>
-            <div className='Address'>{business.address}</div>
+            {/* <div className='Address'>{business.address}</div>
             <div className='City'>{business.city}</div>
             <div className='State'>{business.state}</div>
             <div className='Zip'>{business.zip}</div>
-            <div className='Location'>{business.location}</div>
+            <div className='Location'>{business.location}</div> */}
         </div>
         ))
     }
@@ -31,7 +31,7 @@ const Home = () => {
     return (
     <div>
         <div className='Tagline'>
-            <p>Let's Pley</p></div>
+            <p>Make A Pley</p></div>
         {/* <div className='search_bar'>
             <input className='searchbox' type='text'></input>
         </div> */}
