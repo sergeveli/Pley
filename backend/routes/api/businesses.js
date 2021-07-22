@@ -7,10 +7,19 @@ const asyncHandler = require('express-async-handler');
 
 const { Business, Review } = require('../../db/models');
 
-//(C)CREATE A NEW BUSINESS
+//(C)CREATE A NEW BUSINESS ---> "null value in column \"ownerId\" violates not-null constraint"
 router.post('/new',
     asyncHandler(
         async (req, res) => {
+                ownerId = req.params.ownerId 
+                title = req.params.title 
+                description = req.params.description
+                address = req.params.address
+                city = req.params.city
+                state = req.params.state
+                zip = req.params.zip
+                location = req.params.location
+                gymImg = req.params.gymImg
             const newBusiness = await Business.create({ 
                 ownerId, 
                 title, 
@@ -24,7 +33,7 @@ router.post('/new',
             })
     }))
 
-//(R)FETCH ALL BUSINESSES
+//(R)FETCH ALL BUSINESSES -> WORKS
 router.get( '/',
     asyncHandler(
         async (req, res) => {
@@ -33,7 +42,7 @@ router.get( '/',
     })
 );
 
-//(R)FETCH ONE BUSINESS
+//(R)FETCH ONE BUSINESS -> WORKS
 router.get('/:id',
     asyncHandler(
         async (req, res) => {
@@ -42,29 +51,31 @@ router.get('/:id',
             return await res.json(business);
     })
 )
-//(D)DELETING A BUSINESS -> "message": "Missing where or truncate attribute in the options parameter of model.destroy."
+//(D)DELETING A BUSINESS -> WORKS
 router.delete('/:id',
         asyncHandler(
             async (req, res) => {
             businessId = req.params.id
-                const review = await Business.destroy(businessId, {include: Review}); 
-                return await res.json('Goodbye!');
+                const business = await Business.findByPk(businessId)
+                await business.destroy(); 
+                    return await res.json('All Gone!');
         })
     )
 
     
-//(C)CREATE A REVIEW ---> "null value in column \"userId\" violates not-null constraint"
-router.post('/:id/:ownerId/review/new',
+//(C)CREATE A REVIEW ---> WORKS
+router.post('/:id/:userId/review/new',
 asyncHandler(async(req, res)=>{
-    ownerId = req.params.ownerId
+    userId = req.params.userId
     businessId = req.params.id
         const {rating, answer} = req.body
         const review = await Review.create({
-            ownerId, 
+            userId, 
             businessId, 
             rating, 
             answer
         })
+        return res.json(review)
 }))
 
 //(R)FETCHING ALL REVIEWWS (IS THIS EVEN NECESSARY IF REVIEWS ARE AUTOMATICALLY ON EACH BUSINESS PAGE)
@@ -77,22 +88,26 @@ asyncHandler(async(req, res)=>{
 // );
 
 
-//(U)EDITING A REVIEW -> "message": "Cannot read property 'id' of undefined",
+//(U)EDITING A REVIEW -> "message": "Cannot read property 'rating' of undefined",
 router.put('/:id/reviews/:reviewId/',
     asyncHandler(
         async(req, res) => {
             reviewId = req.params.id
-                
+            rating = req.params.review.rating
+            answer = req.params.review.answer
+            const review = await Review.findByPk(reviewId)
+            return await review.update({rating, answer})                              
 }))
     
     
     
-//(D)DELETE REVIEW -> "message": "Cannot read property 'id' of undefined"
+//(D)DELETE REVIEW -> WORKS
 router.delete('/:id/reviews/:reviewId/',
         asyncHandler(
             async (req, res) => {
-            reviewId = req.params.id
-                const review = await Review.destroy(reviewId); 
+            reviewId = req.params.reviewId
+                const review = await Review.findByPk(reviewId)
+                await review.destroy(); 
                     return await res.json('Deleted!');
         })
     )
