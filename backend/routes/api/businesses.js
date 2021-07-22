@@ -3,7 +3,33 @@ const router = express.Router();
 
 const asyncHandler = require('express-async-handler');
 
-const { Business } = require('../../db/models');
+const { Business, Review } = require('../../db/models');
+
+
+
+router.get('/:id/reviews/',
+    asyncHandler(
+        async (req, res) => {
+          const reviews = await Review.findAll();
+          return await res.json(reviews);
+    })
+);
+
+router.post('/:id/reviews/',
+    asyncHandler(
+        async (req, res) => {
+          const reviews = await Review.findAll();
+          return await res.json(reviews);
+    }))
+
+router.delete('/:id/reviews/:reviewId',
+    asyncHandler(
+        async (req, res) => {
+        reviewId = req.params.id
+          const review = await Review.findByPk(reviewId); /*where: businessId === id for reviews to each business*/
+          return await res.json(review);
+    })
+)
 
 router.get( '/',
     asyncHandler(
