@@ -16,10 +16,13 @@ const Home = () => {
     let businessList;
     if(businesses){
         businessList = businesses.map(business=>(
-        <div>
-            <div>{business.title}</div>
-            <div>{business.description}</div>
-            <div>{business.title}</div>
+        <div className='business_container'>
+            <div className='Name'>{business.title}</div>
+            <div className='Description'>{business.description}</div>
+            <div className='Address'>{business.address}</div>
+            <div className='City'>{business.city}</div>
+            <div className='State'>{business.state}</div>
+            <div className='Zip'>{business.zip}</div>
         </div>
         ))
     }
@@ -28,9 +31,9 @@ const Home = () => {
     <div>
         <div className='Tagline'>
             <p>Let's Pley</p></div>
-        <div className='search_bar'>
+        {/* <div className='search_bar'>
             <input className='searchbox' type='text'></input>
-        </div>
+        </div> */}
         <div>
             {businessList && businessList}
         </div>
