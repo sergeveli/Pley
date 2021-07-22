@@ -22,7 +22,7 @@ router.post('/:id/reviews/',
           return await res.json(reviews);
     }))
 
-router.delete('/:id/reviews/reviewId',
+router.delete('/:id/reviews/:reviewId',
     asyncHandler(
         async (req, res) => {
         reviewId = req.params.id
