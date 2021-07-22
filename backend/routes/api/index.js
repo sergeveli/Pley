@@ -6,12 +6,14 @@ const { setTokenCookie } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
 const { restoreUser } = require('../../utils/auth.js');
 const { requireAuth } = require('../../utils/auth.js');
-const  businessRouter  = require('./businesses.js')
+const  businessRouter  = require('./businesses.js');
+const reviewRouter = require('./reviews');
 ///place router that goes to each business page
 
 
 router.use('/session',sessionRouter)
 router.use('/business', businessRouter)
+/*router.use('/reviews', reviewRouter)*/
 
   router.get(
     '/require-auth',
