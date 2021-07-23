@@ -1,4 +1,5 @@
 import { ThunkAction } from "redux-thunk"
+import csrfFetch from "./csrf"
 
 //ACTION TYPES x CREATORS
 const LOAD_BUSINESS = 'businesses/LOAD_BUSINESS'
@@ -6,6 +7,8 @@ const LOAD_BUSINESSES = 'businesses/LOAD_BUSINESSES'
 const NEW_BUSINESS = 'business/ADD_BUSINESS'
 const EDIT_BUSINESS = 'business/EDIT_BUSINESS'
 const DELETE_BUSINESS = 'businesses/DELETE_BUSINESS'
+const ADD_REVIEW = 'review/ADD_REVIEW'
+//const EDIT_REVIEW = 
 
 const loadBusiness = (business) => ({
     type: LOAD_BUSINESS,
@@ -29,6 +32,11 @@ const deleteBusiness = (business) =>({
 const editBusiness = (business) => ({
     type: EDIT_BUSINESS,
     payload: business
+})
+
+const addReview = (review) => ({
+    type: ADD_REVIEW,
+    payload: review
 })
 
 //THUNK CREATORS
@@ -60,7 +68,6 @@ export const addBusiness = (
             console.log(business)
             dispatch(newBusiness(business))
         }
-
 }
 //(R)
 export const getAllBusinesses = () => async(dispatch) =>{
@@ -111,8 +118,35 @@ export const deleteSingleBusiness = (businessId) => async(dispatch) => {
 
 }
 
+export const addSingleReview = (review) => async(dispatch) =>{
+    console.log(review)
+    const response = await csrfFetch(`/api/business/${review.businessId}/${review.userId}/review/new`, {
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.STRINGIFY(review)            
+        })
+        console.log(review)
+        if(response.ok){
+            const newReview = await response.json()
+            dispatch(addReview(newReview))
+            return newReview
+        }
+}
+
+
+
+
+
+
+
+// when im adding a review..make a copy of the state then, find the business being updated(businessId) 
+// const reviews = newState[businessId].Reviews 
+// reviews.push(action.payload)
+
+
+
 //INITIAL STATE
-const initialState = {allBusiness:null, singleBusiness:null, newBusiness:null}
+const initialState = {allBusiness:null, singleBusiness:null}
 
 
 //REDUCERS

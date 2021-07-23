@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {getAllBusinesses} from '../../store/businessReducer'
 import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './home.css'
+
+import {getAllBusinesses, } from '../../store/businessReducer'
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -20,11 +22,12 @@ const Home = () => {
         <div className='business_container'>
             <div className='avatar'> 
             {/* figure out how to pull gymImg  */}
-                <img src='https://pbs.twimg.com/profile_images/1234479930123132929/S9Uzq9W7_400x400.jpg'/>
+                <img src={business.gymImg}/>
             </div>
-            <h1 className='name'> 
-            {/* Link?? to connect to individul business page */}
+            <h1 className='name'>
+                <NavLink to={`/${business.id}`}> 
                 {business.title}
+                </NavLink>
             </h1>
             <li className='description'>
                 {business.description}
