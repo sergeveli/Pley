@@ -28,7 +28,6 @@ function App() {
           <Route path='/:businessId/'>
             <BusinessPage />
           </Route> 
-
         </Switch>
       )}
     </>

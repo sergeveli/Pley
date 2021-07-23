@@ -34,7 +34,7 @@ const editBusiness = (business) => ({
 
 //THUNK CREATORS
 //(C)
-export const newBusiness = ({
+export const addBusiness = (
     ownerId,
     title,
     description,
@@ -42,8 +42,7 @@ export const newBusiness = ({
     city,
     state,
     zip,
-    gymImg}) 
-    => async(dispatch) => {
+    gymImg) => async(dispatch) => {
         const response = await fetch(`api/business/new`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
@@ -85,26 +84,28 @@ export const getSingleBusiness = (businessId) => async(dispatch) => {
 }
 
 //(U)
-export const editBusiness = (business) => async(dispatch) =>{
+export const editSingleBusiness = (business) => async(dispatch) =>{
     const response = await fetch(`/api/business/${businessId}`,{
         method: 'PUT',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify(business)
     })
-    if(response.ok)
+    if(response.ok){
     const business = await response.json()
     console.log(business)
     dispatch(editBusiness(business))
+    }
 }
 
+
 //(D)
-export const deleteBusiness = (business) => async(dispatch) => {
+export const deleteSingleBusiness = (business) => async(dispatch) => {
     const response = await fetch(`/api/business/${businessId}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(business)
     })
-    if(response.ok)
+    if(response.ok){}
     const business = await response.json()
     console.log('All Gone')
     dispatch(deleteBusiness(business))

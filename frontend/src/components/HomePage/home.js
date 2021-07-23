@@ -49,6 +49,12 @@ const Home = () => {
 
     return (
     <div>
+        <div className='new_Gym'> 
+            {/* figure out how to style x size this */}
+            <button>
+                <p>New Gym?</p>
+            </button>
+        </div>
         <div className='Tagline'>
             <p>Make A Pley</p></div>
         {/* <div className='search_bar'>
