@@ -37,7 +37,11 @@ router.post('/new',
 router.get( '/',
     asyncHandler(
         async (req, res) => {
-            const businesses = await Business.findAll();
+            const businesses = await Business.findAll(
+                {include: 
+              {
+                model: Review
+              }});
             return await res.json(businesses);
     })
 );
@@ -92,9 +96,9 @@ asyncHandler(async(req, res)=>{
 router.put('/:id/reviews/:reviewId/',
     asyncHandler(
         async(req, res) => {
-            reviewId = req.params.id
-            rating = req.params.review.rating
-            answer = req.params.review.answer
+            reviewId = req.params.reviewId
+            rating = req.body.rating
+            answer = req.body.answer
             const review = await Review.findByPk(reviewId)
             return await review.update({rating, answer})                              
 }))
