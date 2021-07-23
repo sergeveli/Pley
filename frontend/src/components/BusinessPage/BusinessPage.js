@@ -11,7 +11,7 @@ const { businessId } = useParams();
 const business = useSelector(state => state.business.singleBusiness);
 
 useEffect(()=> {
-     dispatch(getSingleBusiness(businessId)) //figure out how to make this dynamic.business.map for allBusiness
+     dispatch(getSingleBusiness(businessId)) 
  },[dispatch])
 
     return (
