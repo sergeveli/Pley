@@ -1,5 +1,4 @@
 import { ThunkAction } from "redux-thunk"
-import { json } from "sequelize/types"
 
 //ACTION TYPES x CREATORS
 const LOAD_BUSINESS = 'businesses/LOAD_BUSINESS'
@@ -46,7 +45,7 @@ export const addBusiness = (
         const response = await fetch(`api/business/new`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
-            body: json.STRINGIFY({
+            body: JSON.STRINGIFY({
                 ownerId,
                 title,
                 description,
@@ -84,11 +83,11 @@ export const getSingleBusiness = (businessId) => async(dispatch) => {
 }
 
 //(U)
-export const editSingleBusiness = (business) => async(dispatch) =>{
+export const editSingleBusiness = (businessId) => async(dispatch) =>{
     const response = await fetch(`/api/business/${businessId}`,{
         method: 'PUT',
         headers:{'Content-Type' : 'application/json'},
-        body: JSON.stringify(business)
+        body: JSON.stringify(businessId)
     })
     if(response.ok){
     const business = await response.json()
@@ -99,7 +98,7 @@ export const editSingleBusiness = (business) => async(dispatch) =>{
 
 
 //(D)
-export const deleteSingleBusiness = (business) => async(dispatch) => {
+export const deleteSingleBusiness = (businessId) => async(dispatch) => {
     const response = await fetch(`/api/business/${businessId}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
