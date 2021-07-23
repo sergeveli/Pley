@@ -11,15 +11,15 @@ const { Business, Review } = require('../../db/models');
 router.post('/new',
     asyncHandler(
         async (req, res) => {
-                ownerId = req.params.ownerId 
-                title = req.params.title 
-                description = req.params.description
-                address = req.params.address
-                city = req.params.city
-                state = req.params.state
-                zip = req.params.zip
-                location = req.params.location
-                gymImg = req.params.gymImg
+                ownerId = req.body.ownerId 
+                title = req.body.title 
+                description = req.body.description
+                address = req.body.address
+                city = req.body.city
+                state = req.body.state
+                zip = req.body.zip
+                location = req.body.location
+                gymImg = req.body.gymImg
             const newBusiness = await Business.create({ 
                 ownerId, 
                 title, 
@@ -31,6 +31,7 @@ router.post('/new',
                 location,
                 gymImg
             })
+            return await res.json({})
     }))
 
 //(R)FETCH ALL BUSINESSES -> WORKS

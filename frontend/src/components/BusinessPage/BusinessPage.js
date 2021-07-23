@@ -17,6 +17,7 @@ const [answer, setAnswer] = useState('')
 
 const handleSubmit = async(e) => {
     e.preventDefault()
+    console.log('i')
     const reviewObj = {userId:1, businessId,rating, answer}
     dispatch(addSingleReview(reviewObj))
 }
