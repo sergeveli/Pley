@@ -1,7 +1,12 @@
 import { ThunkAction } from "redux-thunk"
+import { json } from "sequelize/types"
 
+//ACTION TYPES x CREATORS
 const LOAD_BUSINESS = 'businesses/LOAD_BUSINESS'
 const LOAD_BUSINESSES = 'businesses/LOAD_BUSINESSES'
+const NEW_BUSINESS = 'business/ADD_BUSINESS'
+const EDIT_BUSINESS = 'business/EDIT_BUSINESS'
+const DELETE_BUSINESS = 'businesses/DELETE_BUSINESS'
 
 const loadBusiness = (business) => ({
     type: LOAD_BUSINESS,
@@ -12,6 +17,54 @@ const loadBusinesses = (businesses) =>({
     type: LOAD_BUSINESSES,
     payload: businesses
 })
+
+const newBusiness = (business) =>({
+    type: NEW_BUSINESS,
+    payload: business
+})
+const deleteBusiness = (business) =>({
+    type: DELETE_BUSINESS,
+    payload: business
+})
+
+const editBusiness = (business) => ({
+    type: EDIT_BUSINESS,
+    payload: business
+})
+
+//THUNK CREATORS
+//(C)
+export const newBusiness = ({
+    ownerId,
+    title,
+    description,
+    address,
+    city,
+    state,
+    zip,
+    gymImg}) 
+    => async(dispatch) => {
+        const response = await fetch(`api/business/new`,{
+            method: 'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: json.STRINGIFY({
+                ownerId,
+                title,
+                description,
+                address,
+                city,
+                state,
+                zip,
+                gymImg            
+        })})
+        if(response.ok){
+            const business = await response.json()
+            console.log(business)
+            dispatch(newBusiness(business))
+        }
+
+}
+//(R)
 export const getAllBusinesses = () => async(dispatch) =>{
     const response = await fetch('/api/business/')
     if(response.ok){
@@ -19,7 +72,7 @@ export const getAllBusinesses = () => async(dispatch) =>{
         console.log(businesses)
         dispatch(loadBusinesses(businesses))
     }
-    }
+}
 
 
 export const getSingleBusiness = (businessId) => async(dispatch) => {
@@ -30,10 +83,47 @@ export const getSingleBusiness = (businessId) => async(dispatch) => {
         dispatch(loadBusiness(business))   
     }
 }
-const initialState = {allBusiness:null, singleBusiness:null}
 
+//(U)
+export const editBusiness = (business) => async(dispatch) =>{
+    const response = await fetch(`/api/business/${businessId}`,{
+        method: 'PUT',
+        headers:{'Content-Type' : 'application/json'},
+        body: JSON.stringify(business)
+    })
+    if(response.ok)
+    const business = await response.json()
+    console.log(business)
+    dispatch(editBusiness(business))
+}
+
+//(D)
+export const deleteBusiness = (business) => async(dispatch) => {
+    const response = await fetch(`/api/business/${businessId}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(business)
+    })
+    if(response.ok)
+    const business = await response.json()
+    console.log('All Gone')
+    dispatch(deleteBusiness(business))
+
+}
+
+//INITIAL STATE
+const initialState = {allBusiness:null, singleBusiness:null, newBusiness:null}
+
+
+//REDUCERS
 const businessReducer = (state = initialState, action)=>{
     switch(action.type){
+        case NEW_BUSINESS:{
+            return {
+                ...state,
+                newBusiness: action.payload
+            }
+        }
         case LOAD_BUSINESS:{
             return {
             ...state,
@@ -44,6 +134,18 @@ const businessReducer = (state = initialState, action)=>{
             return {
                 ...state,
                 allBusiness: action.payload
+            }
+        }
+        case EDIT_BUSINESS:{
+            return {
+                ...state,
+                singleBusiness: action.payload
+            }
+        }
+        case DELETE_BUSINESS:{
+            return {
+                ...state,
+                singleBusiness: action.payload
             }
         }
         default: 
