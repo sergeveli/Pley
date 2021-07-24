@@ -1,0 +1,49 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url(https://c.stocksy.com/a/eOC300/z9/762640.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.business_container {
+    width: 300px;
+    overflow: scroll;
+    box-shadow: 0px 0px 15px -5px
+}
+
+.business_container:hover {
+    transform: (1.1);
+}
+
+
+.avatar img {
+    height: 130px;
+    border-radius: 10px
+}
+
+.name,
+.description,
+.location {
+    color: white;
+    list-style: none;
+    font-size: 13px;
+    text-align: left;
+    margin-left: 13px;
+    text-shadow: 0 1px 5px white;
+}
+
+.details {
+    width: 25%;
+    height: 25%;
+}
+
+.Tagline {
+    color: white
+}
+
+.new_Gym {
+    color: white
+}
