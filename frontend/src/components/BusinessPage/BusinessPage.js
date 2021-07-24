@@ -31,7 +31,8 @@ useEffect(()=> {
             <div>
                 {business && 
                 <div>{business.title}</div>}
-                <div>
+            </div>
+            <div>
         {business && (
           <div>
             {business.Reviews?.map((review) => (
@@ -40,7 +41,6 @@ useEffect(()=> {
           </div>
         )}
       </div>
-            </div>
         <form onSubmit={handleSubmit}>
             <label>
             Name:
