@@ -123,7 +123,7 @@ export const addSingleReview = (review) => async(dispatch) =>{
     const response = await csrfFetch(`/api/business/${review.businessId}/${review.userId}/review/new`, {
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
-            body: JSON.STRINGIFY(review)            
+            body: JSON.stringify(review)            
         })
         console.log(review)
         if(response.ok){

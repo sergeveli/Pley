@@ -18,7 +18,7 @@ const [answer, setAnswer] = useState('')
 const handleSubmit = async(e) => {
     e.preventDefault()
     console.log('i')
-    const reviewObj = {userId:1, businessId,rating, answer}
+    const reviewObj = { userId: 1, businessId: +businessId, rating: +rating, answer };
     dispatch(addSingleReview(reviewObj))
 }
 
@@ -30,9 +30,18 @@ useEffect(()=> {
     <div>
             <div>
                 {business && 
-                <div>{business.title}</div>} 
+                <div>{business.title}</div>}
+                <div>
+        {business && (
+          <div>
+            {business.Reviews?.map((review) => (
+              <div>{review.answer}</div>
+            ))}
+          </div>
+        )}
+      </div>
             </div>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>
             Name:
                 <input type="text" name="name" />
@@ -52,7 +61,7 @@ useEffect(()=> {
             </label>
             <textarea value={answer} onChange={(e)=>{setAnswer(e.target.value)}}></textarea>
             <input type="submit" value="Submit"
-            onSubmit={handleSubmit} />
+             />
         </form>
     </div>
     )
