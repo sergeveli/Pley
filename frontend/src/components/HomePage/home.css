@@ -9,9 +9,18 @@ body {
 }
 
 .business_container {
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0.8;
+    backdrop-filter: blur(13px);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 5px 15px 30px -10px rgba(0, 0, 0, 0)
+}
+
+.card{
+    border-radius: 1rem;
+    height: 350px;
     width: 300px;
-    overflow: scroll;
-    box-shadow: 0px 0px 15px -5px
+    overflow: hidden;
 }
 
 .business_container:hover{
@@ -44,4 +53,16 @@ body {
 
 .new_Gym {
     color: white
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailes_container{
+    padding: 5px 15px;
+    background-color: white;
+    color:black
 }
