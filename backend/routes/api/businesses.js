@@ -7,7 +7,7 @@ const asyncHandler = require('express-async-handler');
 
 const { Business, Review } = require('../../db/models');
 
-//(C)CREATE A NEW BUSINESS ---> "null value in column \"ownerId\" violates not-null constraint"
+//(C)CREATE A NEW BUSINESS ---> WORKS
 router.post('/new',
     asyncHandler(
         async (req, res) => {
@@ -93,7 +93,7 @@ asyncHandler(async(req, res)=>{
 // );
 
 
-//(U)EDITING A REVIEW -> "message": "Cannot read property 'rating' of undefined",
+//(U)EDITING A REVIEW -> "WORK",
 router.put('/:id/reviews/:reviewId/',
     asyncHandler(
         async(req, res) => {
