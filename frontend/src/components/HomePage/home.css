@@ -20,7 +20,7 @@ body {
     border-radius: 1rem;
     height: 350px;
     width: 300px;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .business_container:hover{
@@ -61,7 +61,7 @@ body {
     align-items: center;
 }
 
-.detailes_container{
+.details_container{
     padding: 5px 15px;
     background-color: white;
     color:black
