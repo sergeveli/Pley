@@ -1,11 +1,11 @@
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
         url(https://c.stocksy.com/a/eOC300/z9/762640.jpg);
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
 }
 
 .business_container {
@@ -23,25 +23,23 @@ body {
     overflow: hidden;
 }
 
-.business_container:hover {
-    transform: (1.1);
+.business_container:hover{
+    transform:(1.1);
 }
 
 
-.avatar img {
-    height: 130px;
+.avatar img{
+    height: 200px;
     border-radius: 10px
 }
 
-.name,
-.description,
-.location {
-    color: white;
-    list-style: none;
-    font-size: 13px;
-    text-align: left;
-    margin-left: 13px;
-    text-shadow: 0 1px 5px white;
+.name,.description,.location {
+        color: white;
+        list-style: none;
+        font-size: 13px;
+        text-align: left;
+        margin-left: 13px;
+        text-shadow: 0 1px 5px white;
 }
 
 .details {
@@ -49,7 +47,7 @@ body {
     height: 25%;
 }
 
-.Tagline {
+.Tagline{
     color: white
 }
 
