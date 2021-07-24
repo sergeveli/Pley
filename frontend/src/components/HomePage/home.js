@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import './home.css'
 
-import {getAllBusinesses, } from '../../store/businessReducer'
+
+import {getAllBusinesses,} from '../../store/businessReducer'
 
 const Home = () => {
     const dispatch = useDispatch();
