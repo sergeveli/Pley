@@ -2,7 +2,7 @@ import { set } from 'js-cookie'
 import React, {useEffect, useState} from 'react'
 import  { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import {getSingleBusiness, addSingleReview, deleteReview} from '../../store/businessReducer'
+import {getSingleBusiness, addSingleReview, deleteReview, deleteSingleBusiness} from '../../store/businessReducer'
 import './businessPage.css'
 import ReviewEditForm from '../ReviewEditForm'
 
@@ -37,6 +37,14 @@ const didClickDeleteReview = (event, review)=>{
     dispatch(deleteReview(review))
 }
 
+const deleteBusiness = (event) => {
+  event.preventDefault()
+  if ( window.confirm('Really delete gym?')) {
+    dispatch(deleteSingleBusiness(businessId))
+    window.location.href = '/'
+  }
+}
+
 useEffect(()=> {
      dispatch(getSingleBusiness(businessId)) 
  },[dispatch])
@@ -47,6 +55,7 @@ useEffect(()=> {
             <div>
                 {business && 
                 <>
+                <a href="#" onClick={deleteBusiness} style={{ position: 'relative', right: 0, top: 0 }}>Delete</a>
                 <h1 className='name'>{business.title}</h1>
                 <div className='avatar'><img src={business.gymImg}/></div>
                 <h1 className='about'>{business.description}</h1>

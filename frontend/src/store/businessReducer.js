@@ -89,14 +89,11 @@ export const editSingleBusiness = (businessId) => async(dispatch) =>{
 export const deleteSingleBusiness = (businessId) => async(dispatch) => {
     const response = await fetch(`/api/business/${businessId}`, {
         method: 'DELETE',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(business)
+        headers: {'Content-Type': 'application/json'}
     })
-    if(response.ok){}
-    const business = await response.json()
-    console.log('All Gone')
-    dispatch(deleteBusiness(business))
-
+    if (response.ok){
+      dispatch(getAllBusinesses())
+    }
 }
 
 export const addSingleReview = (review) => async(dispatch) =>{
