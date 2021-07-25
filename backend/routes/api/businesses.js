@@ -94,20 +94,21 @@ asyncHandler(async(req, res)=>{
 
 
 //(U)EDITING A REVIEW -> "WORK",
-router.put('/:id/reviews/:reviewId/',
+router.put('/:id/reviews/:reviewId',
     asyncHandler(
         async(req, res) => {
             reviewId = req.params.reviewId
             rating = req.body.rating
             answer = req.body.answer
             const review = await Review.findByPk(reviewId)
-            return await review.update({rating, answer})                              
+            await review.update({rating, answer})
+            return res.json('')                              
 }))
     
     
     
 //(D)DELETE REVIEW -> WORKS
-router.delete('/:id/reviews/:reviewId/',
+router.delete('/:id/reviews/:reviewId',
         asyncHandler(
             async (req, res) => {
             reviewId = req.params.reviewId
