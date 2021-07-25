@@ -2,7 +2,7 @@ import { set } from 'js-cookie'
 import React, {useEffect, useState} from 'react'
 import  { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import {getSingleBusiness, addSingleReview} from '../../store/businessReducer'
+import {getSingleBusiness, addSingleReview, deleteReview} from '../../store/businessReducer'
 import './businessPage.css'
 import ReviewEditForm from '../ReviewEditForm'
 
@@ -30,6 +30,11 @@ const didClickEditReview = (event, review)=>{
 
 const stopEditingReview = () =>{
     setEditingReview(null)
+}
+
+const didClickDeleteReview = (event, review)=>{
+    event.preventDefault()
+    dispatch(deleteReview(review))
 }
 
 useEffect(()=> {
@@ -60,7 +65,9 @@ useEffect(()=> {
           <div>
             {business.Reviews?.map((review) => (
               <div className='reviews'>{review.answer} {new Array(review.rating).fill("⭐")} 
-              <a href='#' onClick={event => didClickEditReview(event, review)}>Edit</a></div>
+              <a href='#' onClick={event => didClickEditReview(event, review)}>Edit</a>
+              &nbsp;
+              <a href='#' onClick={event => didClickDeleteReview(event, review)}>Delete</a></div>
             ))}
           </div>
         )}
