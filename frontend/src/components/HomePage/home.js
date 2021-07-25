@@ -1,13 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
+
 import './home.css'
+import NewBusinessForm from '../newBusinessPage/form'
 
 
-import {getAllBusinesses,} from '../../store/businessReducer'
+import {getAllBusinesses} from '../../store/businessReducer'
 
 const Home = () => {
+    const [showNewForm, setShowNewForm] = useState(false)
     const dispatch = useDispatch();
     const { businessId } = useParams();
     const businesses = useSelector((state)=>(state.business.allBusiness))
@@ -52,9 +55,9 @@ const Home = () => {
 
     return (
     <div>
+        <NewBusinessForm visible={showNewForm} onClose={()=> setShowNewForm(false)} />
         <div className='new_Gym'> 
-            {/* figure out how to style x size this */}
-            <button>
+            <button onClick={()=> setShowNewForm(true)}>
                 <p>New Gym?</p>
             </button>
         </div>

@@ -41,32 +41,13 @@ const addReview = (review) => ({
 
 //THUNK CREATORS
 //(C)
-export const addBusiness = (
-    ownerId,
-    title,
-    description,
-    address,
-    city,
-    state,
-    zip,
-    gymImg) => async(dispatch) => {
+export const addBusiness = (business) => async(dispatch) => {
         const response = await fetch(`api/business/new`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
-            body: JSON.STRINGIFY({
-                ownerId,
-                title,
-                description,
-                address,
-                city,
-                state,
-                zip,
-                gymImg            
-        })})
+            body: JSON.stringify({...business, ownerId: 1})})
         if(response.ok){
-            const business = await response.json()
-            console.log(business)
-            dispatch(newBusiness(business))
+            dispatch(getAllBusinesses())
         }
 }
 //(R)
@@ -153,9 +134,11 @@ const initialState = {allBusiness:null, singleBusiness:null}
 const businessReducer = (state = initialState, action)=>{
     switch(action.type){
         case NEW_BUSINESS:{
+            const biz = action.payload
+            console.log('biz/payload', biz)
             return {
                 ...state,
-                newBusiness: action.payload
+                allBusinesses: [...state.allBusinesses, biz]
             }
         }
         case LOAD_BUSINESS:{
