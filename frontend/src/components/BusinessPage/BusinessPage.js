@@ -4,8 +4,7 @@ import  { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {getSingleBusiness, addSingleReview} from '../../store/businessReducer'
 import './businessPage.css'
-
-
+import ReviewEditForm from '../ReviewEditForm'
 
 
 const BusinessPage = () =>{
@@ -15,6 +14,7 @@ const { businessId } = useParams();
 const business = useSelector(state => state.business.singleBusiness);
 const [rating, setRating] = useState('')
 const [answer, setAnswer] = useState('')
+const [editingReview, setEditingReview] = useState(null)
 
 const handleSubmit = async(e) => {
     e.preventDefault()
@@ -23,12 +23,22 @@ const handleSubmit = async(e) => {
     dispatch(addSingleReview(reviewObj))
 }
 
+const didClickEditReview = (event, review)=>{
+    event.preventDefault()
+    setEditingReview(review)
+}
+
+const stopEditingReview = () =>{
+    setEditingReview(null)
+}
+
 useEffect(()=> {
      dispatch(getSingleBusiness(businessId)) 
  },[dispatch])
 
     return (
     <div className='review_container'>
+        {editingReview && <ReviewEditForm review={editingReview} onClose={stopEditingReview} visible></ReviewEditForm>}
             <div>
                 {business && 
                 <>
@@ -49,7 +59,8 @@ useEffect(()=> {
         {business && (
           <div>
             {business.Reviews?.map((review) => (
-              <div className='reviews'>{review.answer} {new Array(review.rating).fill("⭐")}</div>
+              <div className='reviews'>{review.answer} {new Array(review.rating).fill("⭐")} 
+              <a href='#' onClick={event => didClickEditReview(event, review)}>Edit</a></div>
             ))}
           </div>
         )}

@@ -114,6 +114,19 @@ export const addSingleReview = (review) => async(dispatch) =>{
         }
 }
 
+export const updateReview = (review) => async(dispatch) =>{
+    const payload = { answer: review.answer, rating: review.rating}
+    const response = await csrfFetch(`/api/business/${review.businessId}/reviews/${review.id}`,
+    {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+    })
+    if(response.ok){
+        dispatch(getSingleBusiness(review.businessId))
+    }
+}
+
 
 
 
