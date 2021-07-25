@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import  { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {getSingleBusiness, addSingleReview} from '../../store/businessReducer'
+import './businessPage.css'
 
 
 
@@ -27,38 +28,51 @@ useEffect(()=> {
  },[dispatch])
 
     return (
-    <div>
+    <div className='review_container'>
             <div>
                 {business && 
-                <div>{business.title}</div>}
+                <>
+                <h1 className='name'>{business.title}</h1>
+                <div className='avatar'><img src={business.gymImg}/></div>
+                <h1 className='about'>{business.description}</h1>
+                <div className='addressDetails'>
+                    <div className='addy'>{business.address}</div>
+                    <div className='city'>{business.city}</div>
+                    <div className='state'>{business.state}</div>
+                    <div className='zip'>{business.zip}</div>
+                    <div className='neighborhood'>{business.location}</div>
+                </div>
+                </>
+                }
             </div>
             <div>
         {business && (
           <div>
             {business.Reviews?.map((review) => (
-              <div>{review.answer}</div>
+              <div className='reviews'>{review.answer} {new Array(review.rating).fill("⭐")}</div>
             ))}
           </div>
         )}
       </div>
+
         <form onSubmit={handleSubmit}>
-            <label>
+        <div className='nameAndRating'>
+            <label className='nameText'>
             Name:
                 <input type="text" name="name" />
             </label>
-            <label>
+            <label className='ratingText'>
             Rating:
                 <select value={rating} onChange={(e)=>{setRating(e.target.value)}}>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
+                    {[1,2,3,4,5].map(n => <option value={n}>{new Array(n).fill("⭐")}</option>)}
                 </select>
             </label>
-            <label>
+        </div>
+        <div>
+            <label className='thoughts'>
                 What'd You Think?:
             </label>
+        </div>
             <textarea value={answer} onChange={(e)=>{setAnswer(e.target.value)}}></textarea>
             <input type="submit" value="Submit"
              />

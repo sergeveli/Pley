@@ -1,0 +1,31 @@
+.review_container {
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 500px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+    backdrop-filter: blur(13px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 5px 15px 30px -10px rgba(0, 0, 0, 0)
+}
+
+h1.about{
+    color: aliceblue;
+    font-size: large;
+}
+
+.addressDetails {
+    color: aqua;
+}
+
+.nameAndRating{
+    
+}
