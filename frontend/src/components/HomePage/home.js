@@ -38,12 +38,6 @@ const Home = () => {
             <li className='location'>
                 {business.location}
             </li>
-            <div className='details_container'> 
-            {/* figure out how to style x size this */}
-                <button className='button'>
-                    <p>DETAILS</p>
-                </button>
-            </div>
             {/* <div className='Address'>{business.address}</div>
             <div className='City'>{business.city}</div>
             <div className='State'>{business.state}</div>
