@@ -52,11 +52,11 @@ const Home = () => {
     return (
     <div>
         <NewBusinessForm visible={showNewForm} onClose={()=> setShowNewForm(false)} />
-        
+        <div className='new_Gym'> 
             <button onClick={()=> setShowNewForm(true)}>
-               <div className='new_Gym'> <a>New Gym?</a>
-           </div>
+               <a>New Gym?</a>
            </button>
+        </div>
         
         <>
         </>

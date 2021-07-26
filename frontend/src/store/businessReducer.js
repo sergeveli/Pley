@@ -42,7 +42,7 @@ const addReview = (review) => ({
 //THUNK CREATORS
 //(C)
 export const addBusiness = (business) => async(dispatch) => {
-        const response = await fetch(`api/business/new`,{
+        const response = await csrfFetch(`api/business/new`,{
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({...business, ownerId: 1})})
@@ -52,7 +52,7 @@ export const addBusiness = (business) => async(dispatch) => {
 }
 //(R)
 export const getAllBusinesses = () => async(dispatch) =>{
-    const response = await fetch('/api/business/')
+    const response = await csrfFetch('/api/business/')
     if(response.ok){
         const businesses = await response.json()
         console.log(businesses)
@@ -87,7 +87,7 @@ export const editSingleBusiness = (businessId) => async(dispatch) =>{
 
 //(D)
 export const deleteSingleBusiness = (businessId) => async(dispatch) => {
-    const response = await fetch(`/api/business/${businessId}`, {
+    const response = await csrfFetch(`/api/business/${businessId}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
     })
