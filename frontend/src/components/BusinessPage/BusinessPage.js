@@ -88,6 +88,8 @@ useEffect(()=> {
             Name:
                 <input type="text" name="name" />
             </label>
+            </div>
+            <div>
             <label className='ratingText'>
             Rating:
                 <select value={rating} onChange={(e)=>{setRating(e.target.value)}}>
@@ -100,9 +102,10 @@ useEffect(()=> {
                 What'd You Think?:
             </label>
         </div>
+        <div>
             <textarea value={answer} onChange={(e)=>{setAnswer(e.target.value)}}></textarea>
             <input type="submit" value="Submit"
-             />
+             /></div>
         </form>
     </div>
     )
