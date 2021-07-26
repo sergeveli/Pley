@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import './LogInForm.css'
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -21,30 +22,42 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className='innerForm'>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Username or Email
+
+      <div className='credentials'>
+        <label>
+          Username or Email
+        </label>
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
-      </label>
+      </div>
+
+      <div className='credentials'>
       <label>
         Password
+      </label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Log In</button>
+      </div>
+
+      <div className='credentials'>
+      <button type="submit">Go!</button>
+      </div>
+
+      </div>
     </form>
   );
 }

@@ -27,11 +27,13 @@ const Home = () => {
             <div className='avatar'> 
                 <img src={business.gymImg}/>
             </div>
+            <a>
             <h1 className='name'>
                 <NavLink to={`/${business.id}`}> 
                 {business.title}
                 </NavLink>
             </h1>
+            </a>
             <li className='description'>
                 {business.description}
             </li>
@@ -50,13 +52,14 @@ const Home = () => {
     return (
     <div>
         <NewBusinessForm visible={showNewForm} onClose={()=> setShowNewForm(false)} />
-        <div className='new_Gym'> 
+        
             <button onClick={()=> setShowNewForm(true)}>
-                <p>New Gym?</p>
-            </button>
-        </div>
-        <div className='Tagline'>
-            <p>Make A Pley</p></div>
+               <div className='new_Gym'> <a>New Gym?</a>
+           </div>
+           </button>
+        
+        <>
+        </>
         {/* <div className='search_bar'>
             <input className='searchbox' type='text'></input>
         </div> */}
