@@ -23,7 +23,8 @@ const Home = () => {
     let businessList;
     if(businesses){
         businessList = businesses.map(business=>(
-        <div className='business_container card'>
+    <div className='cards'>
+        <div className='card'>
             <div className='avatar'> 
                 <img src={business.gymImg}/>
             </div>
@@ -46,6 +47,7 @@ const Home = () => {
             <div className='Zip'>{business.zip}</div>
             <div className='Location'>{business.location}</div> */}
         </div>
+    </div>
         ))
     }
 
