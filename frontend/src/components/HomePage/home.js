@@ -23,7 +23,9 @@ const Home = () => {
     let businessList;
     if(businesses){
         businessList = businesses.map(business=>(
-        <div className='business_container card'>
+            
+    <div className='cards'>
+        <div className='card'>
             <div className='avatar'> 
                 <img src={business.gymImg}/>
             </div>
@@ -46,17 +48,18 @@ const Home = () => {
             <div className='Zip'>{business.zip}</div>
             <div className='Location'>{business.location}</div> */}
         </div>
+    </div>
         ))
     }
 
     return (
     <div>
         <NewBusinessForm visible={showNewForm} onClose={()=> setShowNewForm(false)} />
-        
+        <div className='new_Gym'> 
             <button onClick={()=> setShowNewForm(true)}>
-               <div className='new_Gym'> <a>New Gym?</a>
-           </div>
+               <a>New Gym?</a>
            </button>
+        </div>
         
         <>
         </>

@@ -14,12 +14,13 @@
 
 .formCard {
     border-radius: 16px;
-    background-color: rgba(255,255,255,0.5);
+    background-color:rgba(255,255,255,0.1);
     padding: 20px;
     width: 500px;
     height: 500px;
     display: flex;
     flex-direction: column;
+
 }
 
 .button {
@@ -51,6 +52,7 @@
 
 input {
     border-radius: 4px;
+    color: black
 }
 
 .cityStateZip {
