@@ -12,11 +12,11 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.'),
-  check('userName')
+  check('username')
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage('Please provide a username with at least 4 characters.'),
-  check('userName')
+  check('username')
     .not()
     .isEmail()
     .withMessage('Username cannot be an email.'),
@@ -32,9 +32,9 @@ router.post(
   '',
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { email, password, userName } = req.body;
+    const { email, password, username } = req.body;
     
-    const user = await User.signup({ email, userName, password });
+    const user = await User.signup({ username, email, password });
 
     await setTokenCookie(res, user);
 

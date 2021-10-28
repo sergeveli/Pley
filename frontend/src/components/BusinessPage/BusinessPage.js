@@ -8,7 +8,7 @@ import ReviewEditForm from '../ReviewEditForm'
 
 
 const BusinessPage = () =>{
-const dispatch = useDispatch();
+const dispatch = useDispatch()
 const { businessId } = useParams();
 
 const business = useSelector(state => state.business.singleBusiness);
@@ -21,6 +21,7 @@ const handleSubmit = async(e) => {
     console.log('i')
     const reviewObj = { userId: 1, businessId: +businessId, rating: +rating, answer };
     dispatch(addSingleReview(reviewObj))
+    dispatch(getSingleBusiness(businessId))
 }
 
 const didClickEditReview = (event, review)=>{
