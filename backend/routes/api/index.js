@@ -13,7 +13,8 @@ const reviewRouter = require('./reviews');
 
 router.use('/session',sessionRouter)
 router.use('/business', businessRouter)
-/*router.use('/reviews', reviewRouter)*/
+router.use('/users', usersRouter )
+// router.use('/reviews', reviewRouter)
 
   router.get(
     '/require-auth',

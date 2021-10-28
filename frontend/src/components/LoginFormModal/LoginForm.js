@@ -12,16 +12,16 @@ function LoginForm() {
   const history = useHistory();
 
 
-    const demoUser = () => {
-    const credential = 'Demo-lition';
-    const password = 'password';
-    history.push('/home')
-    return dispatch(sessionActions.login({ credential, password }))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors)
-      })
-  }
+  // //   const demoUser = () => {
+  // //   const credential = 'Demo-lition';
+  // //   const password = 'password';
+  // //   history.push('/home')
+  // //   return dispatch(sessionActions.login({ credential, password }))
+  // //     .catch(async (res) => {
+  // //       const data = await res.json();
+  // //       if (data && data.errors) setErrors(data.errors)
+  // //     })
+  // // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +69,7 @@ function LoginForm() {
 
       <div className='credentials'>
       <button type="submit">Go!</button>
-      <button type="button" onClick={demoUser}>Demo</button>
+      <button type="button" onClick={()=>dispatch(sessionActions.demoLogin())}>Demo</button>
       </div>
 
       </div>
