@@ -1,0 +1,31 @@
+/* a {
+    display: inline-block;
+    border: 1px solid black;
+    box-shadow: 2px 1px 1px black;
+    background: none;
+    padding: 4px;
+    font-size: 13px;
+    font-family: 'montserrat';
+    cursor: pointer;
+    margin: 10px;
+    transition: 1.5s;
+    color: black;
+} */
+
+.signupbutton {
+    display: inline-block;
+    border: 1px solid black;
+    box-shadow: 2px 1px 1px black;
+    background: none;
+    padding: 4px;
+    font-size: 13px;
+    font-family: 'montserrat';
+    cursor: pointer;
+    margin: 10px;
+    transition: 1.5s;
+    color: black;
+}
+
+.buttons {
+    transition: 1.5s;
+}

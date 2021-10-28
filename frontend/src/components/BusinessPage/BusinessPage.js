@@ -56,7 +56,9 @@ useEffect(()=> {
             <div>
                 {business && 
                 <>
-                <a href="#" onClick={deleteBusiness} style={{ position: 'relative', right: 0, top: 0 }}>Delete</a>
+                <a className='deletebutton' href="#" 
+                onClick={deleteBusiness} 
+                style={{ position: 'relative', right: 0, top: 0 }}>Delete</a>
                 <h1 className='name'>{business.title}</h1>
                 <div className='avatar'><img src={business.gymImg}/></div>
                 <h1 className='about'>{business.description}</h1>
