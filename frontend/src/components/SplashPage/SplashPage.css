@@ -1,0 +1,33 @@
+body {
+    background-color: black;
+}
+
+.splash-container {
+    text-align: center;
+    margin-top: 360px;
+    color: black;
+    background: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(13px);
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    box-shadow: 5px 15px 30px -10px rgba(0, 0, 0, 0);
+    display: flexbox;
+}
+
+.contactbutton {
+    margin-top: 8px;
+    appearance: none;
+    background: none;
+    outline: none;
+    color: grey;
+    text-align: center;
+    box-shadow: 2px 1px 1px grey;
+    background: none;
+    /* padding: 4px 8px; */
+    font-size: 18px;
+    font-family: 'montserrat';
+    cursor: pointer;
+}
