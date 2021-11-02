@@ -77,9 +77,9 @@ useEffect(()=> {
           <div>
             {business.Reviews?.map((review) => (
               <div className='reviews'>{review.answer} {new Array(review.rating).fill("⭐")} 
-              <a href='#' onClick={event => didClickEditReview(event, review)}>Edit</a>
+              <a className='deletebutton' href='#' onClick={event => didClickEditReview(event, review)}>Edit</a>
               &nbsp;
-              <a href='#' onClick={event => didClickDeleteReview(event, review)}>Delete</a></div>
+              <a className='deletebutton' href='#' onClick={event => didClickDeleteReview(event, review)}>Delete</a></div>
             ))}
           </div>
         )}
@@ -104,7 +104,7 @@ useEffect(()=> {
             </label>
         </div>
             <textarea value={answer} onChange={(e)=>{setAnswer(e.target.value)}}></textarea>
-            <input type="submit" value="Submit"
+            <input className='submitbutton' type="submit" value="Submit"
              />
         </form>
     </div>
