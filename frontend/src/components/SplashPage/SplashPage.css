@@ -24,7 +24,8 @@ body {
     outline: none;
     color: grey;
     text-align: center;
-    box-shadow: 2px 1px 1px grey;
+    text-decoration: none;
+    box-shadow: 2px 1px 1px black;
     background: none;
     /* padding: 4px 8px; */
     font-size: 18px;

@@ -23,7 +23,7 @@ const Home = () => {
     let businessList;
     if(businesses){
         businessList = businesses.map(business=>(
-            
+          
     <div className='cards'>
         <div className='card'>
             <div className='avatar'> 

@@ -36,6 +36,7 @@ h1.name{
     display: inline-block;
     border: 1px solid black;
     box-shadow: 2px 1px 1px black;
+    text-decoration: none;
     background: none;
     padding: 4px;
     font-size: 13px;
@@ -44,4 +45,12 @@ h1.name{
     margin: 10px;
     transition: 1.5s;
     color: black;
+}
+
+.submitbutton {
+    color: white;
+}
+
+a {
+    text-decoration: none;
 }
