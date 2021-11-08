@@ -20,16 +20,35 @@ button {
     color: black;
 }
 
-a {
+/* a {
     color: black;
-}
+} */
 
 form {
-    display: block;
-    position: relative;
+    display: flex;
+    background-color: rgba(75, 75, 75, 0.918);
+    padding: 30 px;
+    z-index: 2;
+    margin:auto;
+    width: fit-content;
+    align-self: center;
+    justify-self: center;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
+    background-color:rgba(0, 0, 0, .5); */
 }
-
-form .innerLogInForm {
+.signupcreds{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
+    
+}
+/* form .innerLogInForm {
     position: relative;
     display: block;
     background-color: black;
@@ -49,4 +68,4 @@ form .innerLogInForm .LogInCreds {
     font-size: 13px;
     margin-bottom: 5px;
     transition: 0.4s;
-}
+} */
