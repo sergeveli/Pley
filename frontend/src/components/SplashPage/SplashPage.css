@@ -32,3 +32,12 @@ body {
     font-family: 'montserrat';
     cursor: pointer;
 }
+
+h3 {
+    margin: auto;
+    display: block;
+    width: 410px;
+    align-content: center;
+    justify-content: center;
+    font-style: italic;
+}
