@@ -41,3 +41,13 @@ h3 {
     justify-content: center;
     font-style: italic;
 }
+
+footer {
+    background-color:rgba(0, 0, 0, .2);
+    height: 25px;
+    width: 100vw;
+    padding-top: 2px;
+    display: grid;
+
+}
+
